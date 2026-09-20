@@ -1,75 +1,244 @@
 .bento {
-    display: grid;
-    gap: var(--spacing-base);
+  display: grid;
+  gap: var(--spacing-base);
+  grid-template-columns: 1.9fr 1.3fr 1fr;
+  grid-template-areas:
+    "title title cup"
+    "person list cup"
+    "person list tag";
+  width: min(100%, 1200px);
+  margin-inline: auto;
+  container-type: inline-size;
+}
 
-    .title {
-        --bg: var(--color-brand-yellow);
-    }
+.title {
+  grid-area: title;
+  --bg: var(--color-brand-yellow);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.4rem, 2vw, 2.5rem);
+}
 
-    .list {
-        --bg: var(--color-brand-coffee);
-    }
+.title > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+}
 
-    .image-1 {
-        color: var(--color-text-accent);
-    }
+.title p {
+  color: var(--color-text-dark);
+}
 
-    .tag {
-        --bg: var(--color-brand-olive);
-        font-size: 2rem;
-        line-height: 1.2;
-    }
+.title p:first-child {
+  font-weight: 700;
+  font-size: clamp(1rem, 1.4cqw, 1.7rem);
+}
+
+.title p:last-child {
+  max-width: 20ch;
+  font-size: clamp(0.9rem, 1.4cqw, 1.5rem);
+  line-height: 1.2;
+  text-align: right;
+}
+
+.list {
+  grid-area: list;
+  --bg: var(--color-brand-coffee);
+  padding: clamp(1.4rem, 1.7cqw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  list-style: none;
+  color: var(--color-text-light);
+  font-size: clamp(1.3rem, 2.4cqw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+  font-weight: 700;
+}
+
+.list .highlight {
+  color: var(--color-brand-yellow);
+}
+
+.image-1 {
+  grid-area: cup;
+  color: var(--color-text-accent);
+  position: relative;
+  background: #000;
+  min-height: 430px;
+  overflow: hidden;
+}
+
+.image-1 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.8) contrast(1.1);
+}
+
+.image-1 p {
+  position: absolute;
+  z-index: 1;
+}
+
+.image-1 p:first-of-type {
+  top: 1rem;
+  right: 1.2rem;
+  font-size: clamp(0.7rem, 1.1cqw, 1.1rem);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.image-1 p:last-of-type {
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: clamp(1rem, 2.2cqw, 1.7rem);
+  line-height: 1.2;
+  font-weight: 700;
+  max-width: 11ch;
+  color: var(--color-text-accent);
+  text-wrap: balance;
+}
+
+.image-2 {
+  grid-area: person;
+  min-height: 280px;
+  background: #4d5a3d;
+}
+
+.image-2 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.75) brightness(0.9);
+}
+
+.tag {
+  grid-area: tag;
+  --bg: var(--color-brand-olive);
+  color: var(--color-text-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  font-size: clamp(1.3rem, 2.5cqw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  padding: clamp(1rem, 2vw, 2rem);
+  min-height: 160px;
+}
+
+.tag .website {
+  font-size: clamp(0.85rem, 1.4cqw, 1.5rem);
+  opacity: 0.9;
+  margin-top: 0.25rem;
 }
 
 .card {
-    border-radius: var(--border-radius);
-    background: var(--bg);
-    overflow: clip;
+  border-radius: var(--border-radius);
+  background: var(--bg);
+  overflow: clip;
+  container-type: inline-size;
 
-    &:not(:has(img)) {
-        padding: var(--spacing-base);
-    }
+  &:not(:has(img)) {
+    padding: var(--spacing-base);
+  }
 }
 
 h2 {
-    font-size: 4rem;
-    line-height: 1.1;
-    color: var(--color-text-dark);
-    margin-bottom: var(--spacing-base);
+  font-size: clamp(3.2rem, 5.2cqw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-base);
 }
 
 .website {
-    font-size: 1.2rem;
-    margin-top: auto;
+  font-size: 1.2rem;
+  margin-top: auto;
 }
 
+@container (max-width: 720px) {
+  .bento {
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-areas:
+      "title title"
+      "cup cup"
+      "person list"
+      "tag tag";
+  }
 
+  .image-1 {
+    min-height: 320px;
+  }
+}
+
+@container (max-width: 480px) {
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "cup"
+      "person"
+      "list"
+      "tag";
+  }
+
+  .title > div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title p:last-child {
+    text-align: left;
+  }
+
+  .image-1,
+  .image-2 {
+    min-height: 220px;
+  }
+}
 
 @layer {
-    :root {
-        /* Brand Colors */
-        --color-brand-yellow: #FFB800;
-        --color-brand-olive: #4A5F32;
-        --color-brand-coffee: #5C3C2E;
+  :root {
+    /* Brand Colors */
+    --color-brand-yellow: #ffb800;
+    --color-brand-olive: #4a5f32;
+    --color-brand-coffee: #5c3c2e;
 
-        /* Background Colors */
-        --color-background-dark: #2C1810;
-        --color-background-primary: var(--color-brand-yellow);
-        --color-background-menu: var(--color-brand-coffee);
-        --color-background-accent: var(--color-brand-olive);
+    /* Background Colors */
+    --color-background-dark: #2c1810;
+    --color-background-primary: var(--color-brand-yellow);
+    --color-background-menu: var(--color-brand-coffee);
+    --color-background-accent: var(--color-brand-olive);
 
-        /* Text Colors */
-        --color-text-dark: var(--color-background-dark);
-        --color-text-light: #FFFFFF;
-        --color-text-accent: var(--color-brand-yellow);
+    /* Text Colors */
+    --color-text-dark: var(--color-background-dark);
+    --color-text-light: #ffffff;
+    --color-text-accent: var(--color-brand-yellow);
 
-        /* Component Colors */
-        --color-logo-icon: var(--color-text-dark);
-        --color-menu-highlight: var(--color-brand-yellow);
+    /* Component Colors */
+    --color-logo-icon: var(--color-text-dark);
+    --color-menu-highlight: var(--color-brand-yellow);
 
-        /* Layout */
-        --border-radius: 24px;
-        --spacing-base: 20px;
-        --spacing-large: 40px;
-    }
+    /* Layout */
+    --border-radius: 24px;
+    --spacing-base: 20px;
+    --spacing-large: 40px;
+  }
 }
