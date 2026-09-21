@@ -94,3 +94,4 @@ Du får udleveret markup og lidt CSS. Din opgave er at **implementere** containe
 Find link til din løsning på Netlify og aflever det på Fronter.
 
 Link-struktur: **responsive-album--**[dit unikke netlify link].netlify.app/
+ 
