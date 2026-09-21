@@ -13,7 +13,7 @@ Formålet med denne opgave er at give dig en fornemmelse af, hvordan man kan lav
 - [Creating a bento grid (VIDEO)](https://frontendmasters.com/courses/pro-css/creating-a-bento-grid/)
 
 ## Opgavebeskrivelse
-
+ 
 Du skal arbejde med denne branch, som indeholder et HTML-dokument og en tilhørende stylesheet, der er delvist implementeret. I denne opgave skal du færdiggøre implementeringen af et "bento"-grid (se reference).
 
 Identificer de elementer, der skal fungere som containere, og anvend `container-type: inline-size`. Dette vil gøre det muligt at anvende container queries på disse elementer.
